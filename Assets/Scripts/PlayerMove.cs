@@ -10,7 +10,7 @@ public class PlayerMove : MonoBehaviour
     public GameObject PlayerChildObject;
 
     public Vector2 InputValue;
-    [SerializeField] private DynamicJoystick _dynamicJoystick;
+    [SerializeField] private FixedJoystick _fixedJoystick;
 
     private void FixedUpdate()
     {
@@ -35,7 +35,7 @@ public class PlayerMove : MonoBehaviour
         //Mouse control (Joystick):
         if (Input.GetMouseButton(0))
         {
-            Vector3 inputMouseVector = new Vector3(_dynamicJoystick.Horizontal, Rigidbody.velocity.y, _dynamicJoystick.Vertical);
+            Vector3 inputMouseVector = new Vector3(_fixedJoystick.Horizontal, Rigidbody.velocity.y, _fixedJoystick.Vertical);
             Vector3 speedMouseVector = inputMouseVector * SpeedMove;
             Vector3 speedMouseVectorRelativeToPlayer = transform.TransformVector(speedMouseVector);
             Rigidbody.velocity = new Vector3(speedMouseVectorRelativeToPlayer.x,
